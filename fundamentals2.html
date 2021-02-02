@@ -1,0 +1,29 @@
+<!-- index.html -->
+
+<body>
+  <svg id="chart" width="1000" height="300"></svg>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script>
+    const array = [92, 56, 14, 73, 22, 38, 93, 45, 55];
+    const range = d3.range(50, 950, 100);
+    console.log(range)
+
+    d3.select("#chart")
+      .selectAll("circle")
+      .data(array)
+      .enter()
+      .append("circle")
+        .attr("r", d => (d/2))
+        .attr("cy", 100)
+        .attr("cx", d => range[array.indexOf(d)])
+
+    setTimeout(function() {
+      d3.select("#chart").selectAll("circle")
+        .data(array.sort())
+        .transition().duration(1500)
+          .attr("r", d => (d/2))
+          .attr("cx", d => range[array.indexOf(d)])
+    }, 2000)
+
+  </script>
+</body>

@@ -1,0 +1,29 @@
+<!-- index.html -->
+
+<body>
+  <svg id="chart" width="600" height="300"></svg>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script>
+    const modvals = [];
+    const factors = function(number) {
+        const range = d3.range(1, number+1)
+        for(let value of range) {
+            if (number % value == 0){modvals.push(value)}
+        }
+    return modvals;
+    }
+
+    const array = factors(24);
+
+    d3.select("#chart")
+      .selectAll("circle")
+      .data(array)
+      .enter()
+      .append("circle")
+        .attr("r", d => d)
+        .attr("cy", 100)
+        .attr("cx", d => (10*d))
+        .style("stroke", "red")
+
+  </script>
+</body>
