@@ -1,0 +1,78 @@
+<!-- # 284 -->
+
+<body>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <!-- Set up basic webpage structure -->
+  <div id="header"></div>
+  <div id="nominal"></div>
+  <div id="ordinal"></div>
+  <div id="interval"></div>
+  <div id="ratio"></div>
+
+  <style>
+    .red {
+        color: white;
+        background-color: #e41a1c;
+    }
+    .green {
+        color: white;
+        background-color: #4daf4a;
+    }
+    .blue {
+        color: white;
+        background-color: #377eb8;
+    }
+    .purple {
+        color: white;
+        background-color: #984ea3;
+    }
+  </style>
+
+  <script>
+    const header = d3.select("#header");
+    const nominal = d3.select("#nominal");
+    const ordinal = d3.select("#ordinal");
+    const interval = d3.select("#interval");
+    const ratio = d3.select("#ratio");
+    const sectionParagraphs = d3.select("div").selectAll("p")
+
+    header.append("h1")
+          .attr('title', 'Tooltip')
+          .html("<b>Data Type Overview</b>");
+
+    nominal.append("h2")
+           .text("Nominal")
+           .classed("blue", true);
+
+    nominal.append("p")
+           .text("Nominal data can be used to label variables without any quantitative values attached. An example of this could be eye color");
+
+    ordinal.append("h2")
+           .text("Ordinal")
+           .classed("green", true);
+
+    ordinal.append("p")
+           .text("Ordinal scales are noted for the order that values are in. The order is the only thing that matters, as these values are not quantifiable. An example of this could be a scale of happiness from 1 to 7.");
+
+    interval.append("h2")
+            .text("Interval")
+            .classed("purple", true);
+
+    interval.append("p")
+            .text("Interval scales are numeric and have order and an exact difference between values. However, interval scales do not have a true zero. One example of an interval scale is the Celsius scale for temperature.");
+
+    ratio.append("h2")
+         .text("Ratio")
+         .classed("red", true);
+
+    ratio.append("p")
+         .text("Ratio scales are numeric and have order and an exact difference between values. They also have a true zero which means that we can multiply and divide values. One example of a ratio scale is height.");
+
+    sectionParagraphs.each(function(d, i) {
+      d3.select(this).style('font-variant', 'small-caps');
+    });
+
+  </script>
+
+</body>
